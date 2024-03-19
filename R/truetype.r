@@ -55,13 +55,13 @@ ttf_import <- function(paths = NULL, recursive = TRUE, pattern = NULL) {
 ttf_extract <- function(ttfiles) {
   message("Extracting .afm files from .ttf files...")
   if(identical(ttfiles, character(0))) {
-    print("ttfiles was empty.")
-    return(null)
+    message("No .ttf files found.")
+    return(data.frame(fontfile = character(0), FontName = character(0),
+                      stringsAsFactors = FALSE))
   }
-  print(ttfiles)
 
   # This stores information about the fonts
-  fontdata <- data.frame(fontfile = ttfiles, FontName = "", 
+  fontdata <- data.frame(fontfile = ttfiles, FontName = "",
                          stringsAsFactors = FALSE)
 
   outfiles <- file.path(metrics_path(),
