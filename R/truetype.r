@@ -54,7 +54,7 @@ ttf_import <- function(paths = NULL, recursive = TRUE, pattern = NULL) {
 # Returns mapping between .ttf file name and FontName
 ttf_extract <- function(ttfiles) {
   message("Extracting .afm files from .ttf files...")
-  if(identical(ttfiles, character(0))) {
+  if(rlang::is_empty(ttfiles)) {
     message("No .ttf files found.")
     return(data.frame(fontfile = character(0), FontName = character(0),
                       stringsAsFactors = FALSE))
